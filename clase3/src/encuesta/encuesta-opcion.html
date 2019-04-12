@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
+
+
+<dom-module id="encuesta-opcion">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .marcado{
+        color: #295;
+      }
+      .desmarcado{
+        color: #999;
+      }
+    </style>
+    <p on-click="toggle" class$="[[clase]]">[[respuesta]]</p>
+    <!--
+    <template is="dom-if" if="[[marcado]]">
+      <p on-click="toggle" class$="[[clase]]">Esta marcado!</p>
+    </template>
+     -->
+  </template>
+   
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+
+    class EncuestaOpcion extends Polymer.Element {
+      static get is() { return 'encuesta-opcion'; }
+      static get properties() {
+        return {
+          respuesta: String,
+          marcado: {
+            type: Boolean,
+            value: false
+          },
+          clase:{
+            type: String,
+            computed:'_asingColor(marcado)'
+          }
+        };
+      }
+
+      _asingColor(marcado){
+        if(marcado){    
+          return 'marcado';
+        }
+        return 'desmarcado';
+      }
+      
+      toggle(){
+        this.marcado = !this.marcado;
+      }
+    }
+
+    window.customElements.define(EncuestaOpcion.is, EncuestaOpcion);
+  </script>
+</dom-module>

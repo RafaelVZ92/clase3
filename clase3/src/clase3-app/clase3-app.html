@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../encuesta/encuesta-opcion.html">
 
 <dom-module id="clase3-app">
   <template>
@@ -7,7 +8,14 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <encuesta-opcion
+      respuesta ="Buena respuesta!!"
+    ></encuesta-opcion>
+
+    <encuesta-opcion
+      respuesta ="Buena respuesta!!"
+      marcado
+    ></encuesta-opcion>
   </template>
 
   <script>
@@ -22,6 +30,10 @@
           prop1: {
             type: String,
             value: 'clase3-app'
+          },
+          prop2:{
+            type:String,
+            value:'Hola Mundo'
           }
         };
       }
